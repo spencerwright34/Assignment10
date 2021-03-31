@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Teams>
+
+<!--The Home button will not be highlighted when selected; the instructions didn't say it was necessary-->
+<a class="btn btn-block btn-outline-secondary" 
+   asp-action="Index" asp-controller="Home" asp-route-bowlingteamid="">Home</a>
+<br />
+
+@foreach (var x in Model)
+{
+    <!--The razor code below in the class will highlight whatever category is selected-->
+    <a class="btn btn-block @(x.TeamName == ViewBag.SelectedCategory ? "btn-primary" : "btn-outline-secondary")"
+       asp-action="Index" asp-controller="Home"
+       asp-route-bowlingteamid="@x.TeamId"
+       asp-route-teamname="@x.TeamName">@x.TeamName</a>
+    <br />
+}
